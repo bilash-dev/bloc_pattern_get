@@ -1,10 +1,13 @@
 import 'package:bloc_get_data/bloc/products_bloc.dart';
+import 'package:bloc_get_data/repo/products_repo.dart';
 import 'package:bloc_get_data/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(RepositoryProvider(
+    create: (context) => ProductsRepo(),
+    child: const MyApp(),));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => ProductsBloc(),
+        create: (context) => ProductsBloc(ProductsRepo()),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',

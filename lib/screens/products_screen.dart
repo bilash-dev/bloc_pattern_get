@@ -37,7 +37,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                       child: ListTile(
                         leading: Text(state.productsModel[index].id.toString()),
                         title: Text(state.productsModel[index].title.toString()),
-                      subtitle: Text(state.productsModel[index].body.toString()),),
+                       subtitle: Text(state.productsModel[index].body.toString()),),
                     ),
                   );
                 });
