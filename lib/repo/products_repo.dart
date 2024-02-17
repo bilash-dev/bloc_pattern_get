@@ -8,7 +8,7 @@ class ProductsRepo{
     if(response.statusCode == 200){
       return productsModelFromJson(response.body);
     }else{
-      throw Exception("Failed to load data");
+      throw Exception(response.reasonPhrase);
     }
 
   }

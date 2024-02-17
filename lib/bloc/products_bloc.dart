@@ -10,12 +10,11 @@ class ProductsBloc extends Bloc<ProductsLoadedEvent, ProductsState>{
   final ProductsRepo productsRepo;
   ProductsBloc(this.productsRepo) : super(ProductsLoadingState()){
     on<ProductsLoadedEvent>((event, emit) async{
+      emit(ProductsLoadingState());
       try{
-        emit(ProductsLoadingState());
-
         var response = await productsRepo.getProducts();
 
-          emit(ProductsLoadedState(response));
+        emit(ProductsLoadedState(response));
 
       }catch(e) {
         emit(ProductsErrorState(e.toString()));
